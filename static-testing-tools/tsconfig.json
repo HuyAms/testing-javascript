@@ -1,0 +1,6 @@
+{
+	"compilerOptions": {
+		"noEmit": true, // let's babel compile code
+		"baseUrl": "./src"
+	}
+}
