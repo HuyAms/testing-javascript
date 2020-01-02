@@ -10,6 +10,8 @@ jest.mock('../utils', () => {
 
 test('return winner', () => {
 	const winner = thumbWar('Huy', 'Nhung')
+  	expect(getWinner).toBeCalled()
+  	expect(getWinner).toBeCalledWith('Huy', 'Nhung')
 	expect(winner).toBe('Huy')
 
 	// cleanup
