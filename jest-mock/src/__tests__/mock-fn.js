@@ -1,12 +1,16 @@
 import {thumbWar} from '../index'
 import {getWinner} from '../utils'
 
-// Mock module
-jest.mock('../utils', () => {
-	return {
-		getWinner: jest.fn((p1, p2) => p1),
-	}
-})
+// Mock getWinner in module utils
+// jest.mock('../utils', () => {
+// 	return {
+// 		getWinner: jest.fn((p1, p2) => p1),
+// 	}
+// })
+
+
+// Use __mocks__/utils to mock multiple functions
+jest.mock('../utils')
 
 test('return winner', () => {
 	const winner = thumbWar('Huy', 'Nhung')
