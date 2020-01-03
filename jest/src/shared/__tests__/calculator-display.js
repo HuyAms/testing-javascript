@@ -1,15 +1,26 @@
 import React from 'react'
-import {render} from '@testing-library/react'
+import PropTypes from 'prop-types'
+import {render as rtlRender} from '@testing-library/react'
 import {ThemeProvider} from 'emotion-theming'
 import {dark} from '../../themes'
 import CalculatorDisplay from '../calculator-display'
 
+function render(ui, options) {
+  return rtlRender(ui, {wrapper: Wrapper, ...options})
+}
+
+function Wrapper({children}) {
+  return <ThemeProvider theme={dark}>
+    {children}
+  </ThemeProvider>
+}
+
+Wrapper.propTyppes = {
+  children: PropTypes.node
+}
+
 test('renders', () => {
-  const {container} = render(
-    <ThemeProvider theme={dark}>
-      <CalculatorDisplay value="0" />
-    </ThemeProvider>,
-  )
+  const {container} = render(<CalculatorDisplay value="0" />)
   expect(container).toMatchInlineSnapshot(`
     .emotion-0 {
       position: relative;
