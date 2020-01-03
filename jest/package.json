@@ -17,6 +17,18 @@
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run build"
+    }
+  },
+  "lint-staged": {
+    "**/*.+(js|json|css|html|md)": [
+      "prettier",
+      "jest --findRelatedTests",
+      "git add"
+    ]
+  },
   "keywords": [],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "GPL-3.0",
