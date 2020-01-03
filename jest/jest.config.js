@@ -8,6 +8,10 @@ module.exports = {
     '\\.css$': require.resolve('./test/style-mock.js') // resolve css
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  watchPlugins: [
+      'jest-watch-typeahead/filename',
+      'jest-watch-typeahead/testname',
+  ],
   snapshotSerializers: ['jest-emotion'],
   collectCoverageFrom: ['**/src/**/*.js'],
   coverageThreshold: {
