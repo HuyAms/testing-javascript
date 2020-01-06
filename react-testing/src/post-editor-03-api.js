@@ -3,18 +3,21 @@ import {savePost} from './api'
 
 function Editor({user}) {
   const [isSaving, setIsSaving] = React.useState(false)
+
   function handleSubmit(e) {
     e.preventDefault()
+    setIsSaving(true)
+
     const {title, content, tags} = e.target.elements
-    const newPost = {
+
+    savePost({
       title: title.value,
       content: content.value,
       tags: tags.value.split(',').map(t => t.trim()),
       authorId: user.id,
-    }
-    setIsSaving(true)
-    savePost(newPost)
+    })
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="title-input">Title</label>
