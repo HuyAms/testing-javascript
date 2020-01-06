@@ -3,7 +3,7 @@ import {render, fireEvent} from '@testing-library/react'
 import {FavoriteNumber} from '../favorite-number'
 
 test('Rendering an invalid value shows an error message', () => {
-  const {getByLabelText, debug, getByRole, rerender} = render(
+  const {getByLabelText, queryByRole, getByRole, rerender} = render(
     <FavoriteNumber />,
   )
 
@@ -12,7 +12,6 @@ test('Rendering an invalid value shows an error message', () => {
 
   expect(getByRole('alert')).toHaveTextContent(/the number is invalid/i)
 
-  debug()
   rerender(<FavoriteNumber max={10} />)
-  debug()
+  expect(queryByRole('alert')).toBeNull() // Note: queryByRole returns null instead of error
 })
