@@ -5,6 +5,14 @@ import {ErrorBoundary} from '../error-boundary'
 
 jest.mock('../api')
 
+beforeAll(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {})
+})
+
+afterAll(() => {
+  console.error.mockRestore()
+})
+
 afterEach(() => {
   jest.clearAllMocks()
 })
@@ -35,4 +43,6 @@ test('calls reportError and renders that there was a problem', () => {
   const info = {componentStack: expect.stringContaining('Bomb')}
   expect(mockReportError).toHaveBeenCalledWith(error, info)
   expect(mockReportError).toHaveBeenCalledTimes(1)
+
+  expect(console.error).toHaveBeenCalledTimes(2)
 })
