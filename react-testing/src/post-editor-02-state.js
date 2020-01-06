@@ -2,10 +2,12 @@ import React from 'react'
 
 function Editor() {
   const [isSaving, setIsSaving] = React.useState(false)
+
   function handleSubmit(e) {
     e.preventDefault()
     setIsSaving(true)
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="title-input">Title</label>
