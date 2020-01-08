@@ -6,6 +6,7 @@ function Editor({user}) {
   const [isSaving, setIsSaving] = React.useState(false)
   const [redirect, setRedirect] = React.useState(false)
   const [error, setError] = React.useState(null)
+
   function handleSubmit(e) {
     e.preventDefault()
     const {title, content, tags} = e.target.elements
